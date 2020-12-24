@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const PopularNotice = new Schema(
+const PopularBoard = new Schema(
   {
     title: {
       type: String,
@@ -16,4 +16,4 @@ const PopularNotice = new Schema(
   { versionKey: false }
 );
 
-export default mongoose.model(`PopularNotice`, PopularNotice, `PopularNotice`);
+export default mongoose.model(`PopularBoard`, PopularBoard, `PopularBoard`);

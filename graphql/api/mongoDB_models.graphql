@@ -4,7 +4,13 @@ type Test {
   description: String!
 }
 
-type PopularNotice {
+type PopularBoard {
+  _id: ID!
+  title: String!
+  description: String!
+}
+
+type News {
   _id: ID!
   title: String!
   description: String!
