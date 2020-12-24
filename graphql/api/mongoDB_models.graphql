@@ -3,3 +3,9 @@ type Test {
   title: String!
   description: String!
 }
+
+type PopularNotice {
+  _id: ID!
+  title: String!
+  description: String!
+}
