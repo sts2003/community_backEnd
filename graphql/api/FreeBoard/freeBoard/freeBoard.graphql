@@ -1,0 +1,16 @@
+type Query {
+  getFreeBoard: [FreeBoard!]!
+
+  getFreeDetail(id: String!): FreeBoard!
+  getFreeTotalPage(searchValue: String!, limit: Int!): Int!
+  getFreeNextId(id: String!): FreeBoard
+  getFreeBeforeId(id: String!): FreeBoard
+  getFreeTotalPageOnlyCnt(searchValue: String!, limit: Int!): Int!
+}
+
+type Mutation {
+  createFree(userId: String!, title: String!, description: String!): Boolean!
+  deleteFree(id: String!): Boolean!
+  deleteFreeBoard(id: String!): Boolean!
+  updateFree(id: String!, title: String!, description: String!): Boolean!
+}
