@@ -4,22 +4,47 @@ const Schema = mongoose.Schema;
 
 const User = new Schema(
   {
-    userName: {
+    name: {
       type: String,
       required: true,
     },
-    userPassword: {
+
+    mobile: {
       type: String,
       required: true,
     },
+
     email: {
       type: String,
       required: true,
     },
-    createdAt: {
+
+    nickName: {
       type: String,
       required: true,
     },
+
+    zoneCode: {
+      type: String,
+      required: true,
+    },
+
+    address: {
+      type: String,
+      required: true,
+    },
+
+    detailAddress: {
+      type: String,
+      required: true,
+    },
+
+    secretCode: {
+      type: String,
+      required: true,
+      default: "-",
+    },
+
     notice: [
       {
         type: mongoose.Schema.Types.ObjectId,

@@ -26,8 +26,12 @@ type FreeBoard {
 
 type User {
   _id: ID!
-  userName: String!
-  userPassword: String!
+  name: String!
+  mobile: String!
   email: String!
-  createAt: String!
+  nickName: String!
+  zoneCode: String!
+  address: String!
+  detailAddress: String!
+  secretCode: String!
 }
