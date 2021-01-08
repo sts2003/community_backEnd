@@ -10,6 +10,10 @@ type Mutation {
   ): Boolean!
 
   tryLogin(email: String!): Boolean!
-
   checkSecretCode(email: String!, code: String!): Boolean!
+  getUser(email: String!): User!
+}
+
+type Query {
+  getUserDetail(id: String!): User!
 }
