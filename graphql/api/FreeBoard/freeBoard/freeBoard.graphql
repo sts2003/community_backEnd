@@ -9,8 +9,7 @@ type Query {
 }
 
 type Mutation {
-  createFree(userId: String!, title: String!, description: String!): Boolean!
+  createFree(title: String!, description: String!): Boolean!
   deleteFree(id: String!): Boolean!
-  deleteFreeBoard(id: String!): Boolean!
   updateFree(id: String!, title: String!, description: String!): Boolean!
 }

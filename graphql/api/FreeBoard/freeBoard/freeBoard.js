@@ -31,27 +31,15 @@ export default {
 
   Mutation: {
     createFree: async (_, args) => {
-      const { title, description, userId } = args;
-
+      const { title, description } = args;
+      const current = await CURRENT_TIME();
       try {
-        const current = await CURRENT_TIME();
-
-        const newUserId = mongoose.Types.ObjectId(userId);
-
         const result = await FreeBoard.create({
           title,
           description,
           createdAt: current,
-          author: newUserId,
           isDelete: false,
         });
-
-        const newFreeId = mongoose.Types.ObjectId(result._id);
-
-        const parentUser = await User.findOne({ _id: userId });
-
-        parentUser.FreeBoard.push(newFreeId);
-        parentUser.save();
 
         return true;
       } catch (e) {
@@ -66,7 +54,7 @@ export default {
       console.log(id);
 
       try {
-        const result = await Free.deleteOne({ _id: id });
+        const result = await FreeBoard.deleteOne({ _id: id });
 
         return true;
       } catch (e) {

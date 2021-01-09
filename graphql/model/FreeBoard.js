@@ -19,7 +19,7 @@ const FreeBoard = new Schema(
       required: true,
     },
 
-    author: [
+    email: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
