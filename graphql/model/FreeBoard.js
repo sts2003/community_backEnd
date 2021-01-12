@@ -19,6 +19,11 @@ const FreeBoard = new Schema(
       required: true,
     },
 
+    imagePath: {
+      type: String,
+      required: false,
+    },
+
     email: [
       {
         type: mongoose.Schema.Types.ObjectId,

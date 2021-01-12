@@ -1,11 +1,9 @@
 type Query {
-  getPopularBoard(
-    searchValue: String!
-    limit: Int!
-    currentPage: Int!
-  ): [PopularBoard!]!
-
+  getPopularBoard: [PopularBoard!]!
   getPopularDetail(id: String!): PopularBoard!
   getPopularTotalPage(searchValue: String!, limit: Int!): Int!
   getPopularTotalPageOnlyCnt(searchValue: String!, limit: Int!): Int!
+
+  getPopularNextId(id: String!): PopularBoard
+  getPopularBeforeId(id: String!): PopularBoard
 }

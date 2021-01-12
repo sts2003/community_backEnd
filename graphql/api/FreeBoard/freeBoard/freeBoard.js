@@ -27,6 +27,83 @@ export default {
         return {};
       }
     },
+
+    getFreeNextId: async (_, args) => {
+      const { id } = args;
+      console.log(id);
+
+      try {
+        const result = await FreeBoard.findOne({
+          _id: { $lt: id },
+        })
+          .sort({
+            createdAt: -1,
+          })
+          .limit(1);
+
+        return result;
+      } catch (e) {
+        console.log(e);
+        return {};
+      }
+    },
+
+    getFreeBeforeId: async (_, args) => {
+      const { id } = args;
+      console.log(id);
+
+      try {
+        const result = await FreeBoard.findOne({
+          _id: { $gt: id },
+        })
+          .sort({
+            createdAt: 1,
+          })
+          .limit(1);
+
+        return result;
+      } catch (e) {
+        console.log(e);
+        return {};
+      }
+    },
+    getFreeTotalPage: async (_, args) => {
+      const { searchValue, limit } = args;
+
+      try {
+        const result = await FreeBoard.find({
+          title: { $regex: `.*${searchValue}.*` },
+        });
+
+        const cnt = result.length;
+
+        const realTotalPage = cnt % limit > 0 ? cnt / limit + 1 : cnt / limit;
+
+        console.log(realTotalPage);
+        return parseInt(realTotalPage);
+      } catch (e) {
+        console.log(e);
+        return 0;
+      }
+    },
+
+    getFreeTotalPageOnlyCnt: async (_, args) => {
+      const { searchValue, limit } = args;
+
+      try {
+        const result = await FreeBoard.find({
+          title: { $regex: `.*${searchValue}.*` },
+        });
+
+        const cnt = result.length;
+        console.log(result);
+
+        return parseInt(cnt);
+      } catch (e) {
+        console.log(e);
+        return 0;
+      }
+    },
   },
 
   Mutation: {
@@ -38,7 +115,6 @@ export default {
           title,
           description,
           createdAt: current,
-          isDelete: false,
         });
 
         return true;

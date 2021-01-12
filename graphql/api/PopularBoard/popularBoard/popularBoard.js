@@ -3,20 +3,8 @@ import PopularBoard from "../../../model/PopularBoard";
 export default {
   Query: {
     getPopularBoard: async (_, args) => {
-      const { searchValue, limit, currentPage } = args;
-
       try {
-        const result = await PopularBoard.find(
-          {
-            $or: [
-              { title: { $regex: `.*${searchValue}.*` } },
-              { description: { $regex: `.*${searchValue}.*` } },
-            ],
-          },
-          {}
-        )
-          .limit(limit)
-          .skip(currentPage * limit);
+        const result = await PopularBoard.find({}, {});
 
         return result;
       } catch (e) {
@@ -73,6 +61,46 @@ export default {
       } catch (e) {
         console.log(e);
         return 0;
+      }
+    },
+
+    getPopularNextId: async (_, args) => {
+      const { id } = args;
+      console.log(id);
+
+      try {
+        const result = await PopularBoard.findOne({
+          _id: { $lt: id },
+        })
+          .sort({
+            createdAt: -1,
+          })
+          .limit(1);
+
+        return result;
+      } catch (e) {
+        console.log(e);
+        return {};
+      }
+    },
+
+    getPopularBeforeId: async (_, args) => {
+      const { id } = args;
+      console.log(id);
+
+      try {
+        const result = await PopularBoard.findOne({
+          _id: { $gt: id },
+        })
+          .sort({
+            createdAt: 1,
+          })
+          .limit(1);
+
+        return result;
+      } catch (e) {
+        console.log(e);
+        return {};
       }
     },
   },
