@@ -37,3 +37,19 @@ type User {
   detailAddress: String!
   secretCode: String!
 }
+
+type AnonymousBoard {
+  _id: ID!
+  title: String!
+  description: String!
+  createdAt: String!
+  imagePath: String!
+}
+
+type TipsBoard {
+  _id: ID!
+  title: String!
+  description: String!
+  createdAt: String!
+  imagePath: String!
+}

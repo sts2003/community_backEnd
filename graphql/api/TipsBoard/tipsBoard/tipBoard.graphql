@@ -1,0 +1,9 @@
+type Query {
+  getAllTips: [TipsBoard!]!
+}
+
+type Mutation {
+  createTipsBoard(title: String!, description: String!): Boolean!
+  deleteTipsBoard(id: String!): Boolean!
+  updateTipsBoard(id: String!, title: String!, description: String!): Boolean!
+}

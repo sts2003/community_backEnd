@@ -110,6 +110,7 @@ export default {
     createFree: async (_, args) => {
       const { title, description } = args;
       const current = await CURRENT_TIME();
+
       try {
         const result = await FreeBoard.create({
           title,

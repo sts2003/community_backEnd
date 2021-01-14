@@ -1,0 +1,13 @@
+type Mutation {
+  createAnonymousBoard(title: String!, description: String!): Boolean!
+  deleteAnonymousBoard(id: String!): Boolean!
+  updateAnonymousBoard(
+    id: String!
+    title: String!
+    description: String!
+  ): Boolean!
+}
+
+type Query {
+  getAllAnonymousBoard: [AnonymousBoard!]!
+}
