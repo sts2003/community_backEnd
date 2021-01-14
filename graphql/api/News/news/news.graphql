@@ -1,3 +1,5 @@
 type Query {
   getAllNewses: [News!]!
+
+  getNewsDetail(id: String!): News!
 }
