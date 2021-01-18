@@ -3,7 +3,20 @@ import nodemailer from "nodemailer";
 import smtpPool from "nodemailer-smtp-pool";
 
 export default {
-  Query: {},
+  Query: {
+    getUserDetail: async (_, args) => {
+      const { email } = args;
+      try {
+        const detailDatum = await User.findOne({ email });
+        console.log(email);
+
+        return detailDatum;
+      } catch (e) {
+        console.log(e);
+        return {};
+      }
+    },
+  },
 
   Mutation: {
     registUser: async (_, args) => {
@@ -150,17 +163,37 @@ export default {
         return {};
       }
     },
-
-    getUserDetail: async (_, args) => {
-      const { email } = args;
+    updateUser: async (_, args) => {
+      const { id, email, name, nickName, mobile } = args;
       try {
-        const detailDatum = await User.findOne({ email });
-        console.log(email);
-
-        return detailDatum;
+        const result = await User.updateOne(
+          { _id: id },
+          {
+            $set: {
+              email,
+              name,
+              nickName,
+              mobile,
+            },
+          }
+        );
+        return true;
       } catch (e) {
         console.log(e);
-        return {};
+        return false;
+      }
+    },
+    deleteUser: async (_, args) => {
+      const { id } = args;
+
+      try {
+        const result = await User.deleteOne({
+          _id: id,
+        });
+        return true;
+      } catch (e) {
+        console.log(e);
+        return false;
       }
     },
   },
