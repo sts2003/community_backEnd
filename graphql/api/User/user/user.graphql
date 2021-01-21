@@ -19,6 +19,8 @@ type Mutation {
     name: String!
     nickName: String!
     mobile: String!
+    address: String!
+    detailAddress: String!
   ): Boolean!
 
   tryLogin(email: String!): Boolean!

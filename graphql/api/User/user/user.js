@@ -164,7 +164,15 @@ export default {
       }
     },
     updateUser: async (_, args) => {
-      const { id, email, name, nickName, mobile } = args;
+      const {
+        id,
+        email,
+        name,
+        nickName,
+        mobile,
+        address,
+        detailAddress,
+      } = args;
       try {
         const result = await User.updateOne(
           { _id: id },
@@ -174,6 +182,8 @@ export default {
               name,
               nickName,
               mobile,
+              address,
+              detailAddress,
             },
           }
         );

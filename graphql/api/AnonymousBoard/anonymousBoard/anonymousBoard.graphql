@@ -10,4 +10,5 @@ type Mutation {
 
 type Query {
   getAllAnonymousBoard: [AnonymousBoard!]!
+  getAnonyDetail(id: String!): AnonymousBoard!
 }

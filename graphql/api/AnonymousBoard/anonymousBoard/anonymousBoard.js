@@ -12,6 +12,20 @@ export default {
         console.log(e);
       }
     },
+
+    getAnonyDetail: async (_, args) => {
+      const { id } = args;
+      try {
+        const result = await AnonymousBoard.findOne({
+          _id: id,
+        });
+
+        return result;
+      } catch (e) {
+        console.log(e);
+        return {};
+      }
+    },
   },
 
   Mutation: {
